@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+		
+		</style>
+		<h1>Results: </h1>
+		{% for server in servers %}
+		<button class="accordion">{{ server.name }}</button>
+		<div class="panel">
+			{% include '_server.html' %}
+		</div>
+		{% endfor %}
+		<script>serverAccordion();</script>
+		
+{% endblock %}

@@ -1,0 +1,9 @@
+__pycache__
+.flaskenv
+boot.sh
+Dockerfile
+env
+venv
+test_env
+logs
+/app/data

@@ -1,0 +1,9 @@
+Good {{ when }},
+
+The scheduled automation {{ automation }} was completed on {{ date }} at {{ time }}.
+
+Please see attached for any return data.
+
+Sincerely,
+Central SysOps
+Your automated systems administrator

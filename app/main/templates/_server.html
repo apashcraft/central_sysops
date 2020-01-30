@@ -1,0 +1,58 @@
+<table class="table">
+	<tr>
+		<td>
+			<p><b>Tier:</b> {{ server.tier }}</p>
+			<p><b>Environment:</b> {{ server.environment }}</p>
+			<p><b>Department:</b> {{ server.department }}</p>
+			<p><b>IPs</b> {{ server.ip }}</p>
+			<p><b>Management Group:</b> {{ server.management_group }}</p>
+			<p><b>Platform:</b> {{ server.platform }}</p>
+			<p><b>Operating System:</b> {{ server.operating_system }}</p>
+			<p><b>Power State:</b> {{ server.power_state }}</p>
+			<p><b>Business Systems:</b>
+				<ul>
+					<p><b>Chef:</b> {{ server.business_system.chef }}</p>
+					<p><b>vCenter:</b> {{server.business_system.vcenter }}</p>
+					<p><b>SolarWinds:</b> {{ server.business_system.solarwinds }}</p>
+					<p><b>ServiceNow:</b> {{ server.business_system.servicenow }}</p>
+				</ul>
+			</p>
+			<p><b>UUIDs:</b> 
+				<ul>
+					<p><b>Chef GUUID:</b> {{server.uuids.chef_guuid }}</p>
+					<p><b>SolarWinds URI:</b> {{server.uuids.solarwinds_uri }}</p>
+					<p><b>vCenter:</b> 
+						<ul>
+							<p><b>MoRefID:</b> {{ server.uuids.vcenter.MoRefID }}</p>
+							<p><b>InstanceUUID:</b> {{ server.uuids.vcenter.InstanceUuid }}</p>
+							<p><b>SMBiosUUID:</b> {{ server.uuids.vcenter.SMBiosUuid }}</p>
+						</ul>
+					</p>
+					<p><b>ServiceNow UUID::</b> {{server.uuids.servicenow_uuid }}</p>
+				</ul>
+			</p>
+			<p><b>vCenter Tags:</b> 
+			    <ul>
+					{% for key, value in server.vcenter_tags.items() %}
+					<dt><b>{{ key }}</b></dt>
+					<dd>{{ value }}</dd>
+					{% endfor %}
+			    </ul>
+			</p>
+			<p><b>Chef Run List:</b>
+				<ul>
+					{% for item in server.chef_run_list %}
+						<li>{{ item }}</li>
+					{% endfor %}
+			    </ul>
+			</p>
+			<p><b>Chef Tags:</b>
+				<ul>
+					{% for item in server.chef_tags %}
+						<li>{{ item }}</li>
+					{% endfor %}
+			    </ul>
+			</p>
+		</td>
+	</tr>
+</table>

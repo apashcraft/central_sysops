@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+	<div class="field-select">
+		<h2 class="title-automations">Schedule Automation</h2>
+		<form action="" method="post">
+			<div class="task_container">
+				<select name="automations" class="automation-selection selection">
+					<option value="0">Select automation:</option>
+					{% for task in tasks %}
+					<option value='{{ task[0] }}'>{{ task[1] }}</option>
+					{% endfor %}
+				</select>
+
+				<div id="email">
+					<label for="email" class="email-text">Email(optional):</label>
+					<input type="email" name="email-address" class="email-selection"  multiple placeholder="example1@delaware.gov, example2@delaware.gov">
+				</div>
+
+				<select name="schedule" class="schedule-selection" onchange="isScheduled(this);">
+					<option value="now">Now</option>
+					<option id ="schedule-option" value="schedule">Schedule</option>
+				</select>
+
+				<div id="schedule-select" class="datetime-selection" style="display:none;">
+					<div class="date-selection">
+						<label for="date" class="date-text">Date:</label>
+						<input type="date" name="date-schedule" class="date-selection">
+					</div>
+					<div class="time-selection">
+						<label for="time" class="time-text">Time:</label>
+						<input type="time" name="time-schedule" class="time-selection">
+					</div>
+				</div>
+
+				<button type="submit" class="selection"><i class="fa fa-superpowers" aria-hidden="true"></i></button>
+			</div>
+		</form>
+	</div>
+	<div class="flash-update">
+		{% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                {{ message }}
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
+	</div>
+{% endblock %}

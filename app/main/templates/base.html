@@ -1,0 +1,45 @@
+<!doctype html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        {% if title %}
+        <title>{{ title }} - Central SysOps</title>
+        {% else %}
+        <title>Welcome to Central SysOps</title>
+        {% endif %}
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+        <link href="https://fonts.googleapis.com/css?family=Noto+Serif&display=swap" rel="stylesheet"> 
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+    </head>
+    <body>
+        <div class="page-container">
+            <div class="content-wrap">
+                <div class="main-nav">
+                    <ul class="nav">
+                        <li class="name">Central SysOps</li>
+                        <li><a href="{{ url_for('main.index') }}">Home</a></li>
+                        <li><a href="{{ url_for('main.automations') }}">Automations</a></li>
+                    </ul>
+                </div>
+                        
+                <header>
+                    <form method="POST">
+                        <div class="search-container">
+                            <input type="text" placeholder="Search..." name="search">
+                            <button type="submit"><i class="fa fa-search"></i></button>
+                    </form>
+                </header>
+                <hr>
+                <main>
+                    {% block app_content %}{% endblock %}
+                </main>
+                <footer class="footer">
+                    <p class="copyright">&copy;2019, DTI</p>
+                </footer>
+            </div>
+        </div>
+    </body>
+</html>
